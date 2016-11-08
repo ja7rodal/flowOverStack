@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <h3>Nueva Pregunta</h3>
+      <h3><%= form_title %></h3>
       <%= form_for  @question do |f|%>
         <div class="form-group">
           <%= f.text_field :title, class:"form-control", placeholder:"Titulo de la pregunta"   %>
@@ -10,7 +10,7 @@
           <%= f.text_area :description, class:"form-control", size:"60x12", placeholder:"Redacta tu pregunta" %>
         </div>
         <div class="form-group">
-          <%= f.submit "Preguntar", class: "btn btn-primary btn-lg btn-block" %>
+          <%= f.submit form_submit, class: "btn btn-primary btn-lg btn-block" %>
         </div>
       <% end %>
     </div>
