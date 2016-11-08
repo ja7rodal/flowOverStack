@@ -3,8 +3,6 @@ class QuestionsController < ApplicationController
     @question = Question.all
   end
 
-  def show
-  end
 
   def new
     @question = Question.new
@@ -30,12 +28,19 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-    if @question.update(question_params)
+    if @question.update(questions_params)
       redirect_to root_path, notice: "Pregunta actualizada correctamente"
     else
       render :edit
     end
   end
+  def destroy
+    question = Question.find(params[:id])
+    question.destroy
+    redirect_to root_path, notice:"Pregunta eliminada con exito"
+  end
+
+
 
   private
   def questions_params
