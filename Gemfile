@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 #devise
 gem 'devise'
+# bootstrap-aplication (layouts)
 gem 'twitter-bootstrap-rails'
+gem 'devise-bootstrap-views'
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
