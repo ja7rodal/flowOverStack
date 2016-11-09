@@ -13,6 +13,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.create(questions_params)
+    @question.user = current_user
     if @question.save
       redirect_to root_path notice: "Pregunta publicada con exito"
     else
