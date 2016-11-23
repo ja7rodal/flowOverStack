@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
 
-  get 'comments/index'
-
-  get 'comments/create'
-
   devise_for :users
   root 'questions#index'
+
   resources :questions do
+    resources :comments, only: [:create], module: :questions
+
     resource :answers, only: [:create] do
-      resources :comments, only: [:create]
+      resources :comments, only: [:create], module: :answers
     end
 
-    resources :comments, only: [:create]
+
 
   end
 
