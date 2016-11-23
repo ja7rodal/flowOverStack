@@ -4,6 +4,6 @@ class Questions::CommentsController < CommentsController
   private
 
     def set_commentable
-      @commentable = Film.find(params[:film_id])
+      @commentable = Question.find(params[:question_id])
     end
 end
