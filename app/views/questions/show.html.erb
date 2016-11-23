@@ -7,19 +7,9 @@
   </div>
   <!-- comments-->
   <div class="row">
-    <div class="col-xs-9 col-xs-offset-2">
-      <div id="comments">
-      <% for comment in @question.comments  %>
-        <div class="comment">
-          <%=simple_format comment.content %>
-        </div>
-      <% end %>
-      </div>
-
-
-      <h4>New Comment</h2>
-
-
+    <div class="col-xs-8 col-xs-offset-1">
+      <%= render partial: "comments/comments", locals: {commentable: @question} %>
+      <%= render partial: "comments/form", locals: {commentable: @question} %>
     </div>
   </div>
 
