@@ -1,10 +1,30 @@
-<div class="container">
+<div class="container"><!-- queston-->
   <div class="row">
     <h2><%= @question.title %></h2>
     <div class="col-xs-10">
       <p><%= @question.description %></p>
     </div>
   </div>
+  <!-- comments-->
+  <div class="row">
+    <div class="col-xs-9 col-xs-offset-2">
+      <div id="comments">
+      <% for comment in @question.comments  %>
+        <div class="comment">
+          <%=simple_format comment.content %>
+        </div>
+      <% end %>
+      </div>
+
+
+      <h4>New Comment</h2>
+
+
+    </div>
+  </div>
+
+
+
 <!-- respuestas list-->
 <div class="row">
   <h3><%= @question.answers.count %> Respuestas</h3>
