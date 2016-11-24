@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   resources :questions do
     resources :comments, only: [:create], module: :questions
 
-    resources :answers, only: [:create] do
+    resources :answers, only: [:create]
       #resources :comments, only: [:create], module: :answers
-    end
+    resources :votes, only: [:create, :destroy], module: :questions
   end
 
   resources :answers, only: [:create] do
     resources :comments, only: [:create], module: :answers
+    resources :votes, only: [:create, :destroy], module: :answers
 
   end
 

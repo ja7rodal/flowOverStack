@@ -15,4 +15,8 @@ class Answer < ApplicationRecord
   belongs_to :user
   has_many :comments, as: :commentable
   has_many :votes, as: :voteable
+  
+  def voted_by?(user)
+    votes.exists?(user: user)
+  end
 end
