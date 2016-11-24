@@ -1,6 +1,9 @@
 <div class="container"><!-- queston-->
   <div class="row">
     <h2><%= @question.title %></h2>
+    <div class="col-xs-1">
+      <%= render partial: "votes/votes", locals: {voteable: @question} %>
+    </div>
     <div class="col-xs-10">
       <p><%= @question.description %></p>
     </div>
@@ -21,9 +24,13 @@
     <hr>
   </div>
   <% @question.answers.each do |answer|  %>
+  <hr>
   <div class="row">
+    <div class="col-xs-1">
+      <%= render partial: "votes/votes", locals: {voteable: answer} %>
+    </div>
     <div class="col-xs-10">
-      <hr>
+
       <div class="panel panel-default">
         <header class="panel-heading">Respondió <%= answer.user.email %> hace <%= answer.created_at %></header>
         <div class="panel-body"><%= answer.body %></div>
