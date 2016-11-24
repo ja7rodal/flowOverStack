@@ -23,6 +23,7 @@
   <% @question.answers.each do |answer|  %>
   <div class="row">
     <div class="col-xs-10">
+      <hr>
       <div class="panel panel-default">
         <header class="panel-heading">Respondió <%= answer.user.email %> hace <%= answer.created_at %></header>
         <div class="panel-body"><%= answer.body %></div>
