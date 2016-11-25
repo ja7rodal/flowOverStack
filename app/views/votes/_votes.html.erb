@@ -1,14 +1,23 @@
 
+<div class="text-center">
+  <%= voteable.votes.count %>
+  <p>Votos </p>
 
-<%= voteable.votes.count %>
-<p>Votos </p>
+<% if user_signed_in? %>
+  <% if voteable.class.to_s == "Question" %>
+    <% if  !voteable.votes.where(user: current_user).exists? %>
+      <%= link_to "<span class='glyphicon glyphicon-triangle-top'></span>".html_safe, question_votes_path(voteable), method: :post, class: "lead text-primary"%>
+    <% else %>
+      <%= link_to "<span class='glyphicon glyphicon-triangle-bottom'></span>".html_safe, question_vote_path(voteable), method: :delete, class: "lead text-danger"%>
+    <% end %>
+  <% end %>
 
-<% if voteable.class.to_s == "Question" %>
-  <p>Question</p>
-  <%= link_to "create", question_votes_path(voteable), method: :post, class: ""%>
-  <%= link_to "Delete", question_vote_path(voteable), method: :delete, class: ""%>
-<% else %>
-  <p>Answer</p>
-  <%= link_to "create", answer_votes_path(voteable), method: :post, class: ""%>
-  <%= link_to "Delete", answer_vote_path(voteable), method: :delete, class: ""%>
-<% end %>
+  <% if voteable.class.to_s == "Answer"%>
+    <% if !voteable.votes.where(user: current_user).exists? %>
+      <%= link_to "<span class='glyphicon glyphicon-triangle-top'></span>".html_safe, answer_votes_path(voteable), method: :post, class: "lead text-primary"%>
+    <% else %>
+      <%= link_to "<span class='glyphicon glyphicon-triangle-bottom'></span>".html_safe, answer_vote_path(voteable), method: :delete, class: "lead text-danger"%>
+    <% end %>
+  <% end %>
+<% end %>  
+</div>

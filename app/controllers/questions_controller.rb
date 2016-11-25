@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show ]
+  before_action :errores
+
 
   def index
     @question = Question.all
@@ -45,7 +47,9 @@ class QuestionsController < ApplicationController
     redirect_to root_path, notice:"Pregunta eliminada con exito"
   end
 
-
+  def errores
+    @@errs = {}
+  end
 
   private
   def questions_params
