@@ -1,8 +1,14 @@
-<% voteable.votes.each do |vote| %>
-<div class="well">
-  <%= vote.count %>
-</div>
+
+
+<%= voteable.votes.count %>
+<p>Votos </p>
+
+<% if voteable.class.to_s == "Question" %>
+  <p>Question</p>
+  <%= link_to "create", question_votes_path(voteable), method: :post, class: ""%>
+  <%= link_to "Delete", question_vote_path(voteable), method: :delete, class: ""%>
+<% else %>
+  <p>Answer</p>
+  <%= link_to "create", answer_votes_path(voteable), method: :post, class: ""%>
+  <%= link_to "Delete", answer_vote_path(voteable), method: :delete, class: ""%>
 <% end %>
-<p>
-  Votos
-</p>

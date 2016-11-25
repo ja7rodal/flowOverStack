@@ -1,4 +1,4 @@
-class Questions::CommentsController < CommentsController
+class Questions::VotesController < VotesController
   before_action :set_voteable
 
   private
