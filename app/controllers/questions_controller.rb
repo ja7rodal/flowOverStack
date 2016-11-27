@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+
   end
 
   def create
@@ -24,6 +25,9 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @comment = Comment.new
+    @answer = Answer.new
+
   end
 
   def edit
