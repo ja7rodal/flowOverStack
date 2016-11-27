@@ -1,21 +1,25 @@
 <div class="container"><!-- queston-->
   <% if @answer.errors.any? %>
-    <div class=" col-xs-9 alert alert-danger">
-      <ul>
-        <% @answer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+    <div class="row">
+      <div class=" col-xs-9 alert alert-danger">
+          <ul>
+            <% @answer.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     <% end %>
 
     <%if @comment.errors.any? %>
+    <div class="row">
       <div class=" col-xs-9 alert alert-danger">
         <ul>
           <% @comment.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
           <% end %>
         </ul>
+      </div>
       </div>
     <% end %>
 
@@ -32,7 +36,7 @@
       <%= render partial: "questions/comments", locals: {commentable: @question} %>
       <% if user_signed_in? %>
         <%= render partial: "questions/comments_form", locals: {commentable: @question} %>
-      <% end %>  
+      <% end %>
     </div>
   </div>
 

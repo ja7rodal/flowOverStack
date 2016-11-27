@@ -14,8 +14,7 @@
 
   <% if user_signed_in? && voteable.votes.where(user: current_user).exists? %>
     <% vote = voteable.votes.where(user: current_user).take %>
-    <% vote.voteable_type == "Question" ? q = vote.voteable_id : q = Question.find(Answer.find(vote.voteable_id)) %>
-    <%= q %>
+    <% vote.voteable_type == "Question" ? q = vote.voteable_id : q = voteable.question_id %>
     <%= link_to vote_path(vote, :ans => q), method: :delete, class:"" do %>
       <span class="glyphicon glyphicon-triangle-bottom text-danger"></span>
     <% end %>
