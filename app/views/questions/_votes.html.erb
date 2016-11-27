@@ -1,0 +1,24 @@
+<div class="col-xs-1 text-center lead">
+
+  <% path  = voteable.class.to_s.downcase + "_votes_path"%>
+
+  <% if user_signed_in? && !voteable.votes.where(user: current_user).exists?%>
+    <%= link_to send(path, voteable), method: :post, class:"" do%>
+      <span class="glyphicon glyphicon-triangle-top text-success"></span>
+      <% end %>
+  <% end %>
+
+
+  <p class="text-center"><%= voteable.votes.count %></p>
+  <p class="text-center">Votos</p>
+
+  <% if user_signed_in? && voteable.votes.where(user: current_user).exists? %>
+    <% vote = voteable.votes.where(user: current_user).take %>
+    <% vote.voteable_type == "Question" ? q = vote.voteable_id : q = Question.find(Answer.find(vote.voteable_id)) %>
+    <%= q %>
+    <%= link_to vote_path(vote, :ans => q), method: :delete, class:"" do %>
+      <span class="glyphicon glyphicon-triangle-bottom text-danger"></span>
+    <% end %>
+  <% end %>
+
+</div>

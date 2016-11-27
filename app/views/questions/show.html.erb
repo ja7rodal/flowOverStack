@@ -21,6 +21,7 @@
 
   <div class="row">
     <h2><%= @question.title %></h2>
+    <%= render partial: "questions/votes", locals: {voteable: @question} %>
     <div class="col-xs-10">
       <p><%= @question.description %></p>
     </div>
@@ -29,7 +30,9 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-1">
       <%= render partial: "questions/comments", locals: {commentable: @question} %>
-      <%= render partial: "questions/comments_form", locals: {commentable: @question} %>
+      <% if user_signed_in? %>
+        <%= render partial: "questions/comments_form", locals: {commentable: @question} %>
+      <% end %>  
     </div>
   </div>
 
@@ -38,13 +41,15 @@
   <!-- respuestas list-->
   <div class="row">
     <h3><%= @question.answers.count %> Respuestas</h3>
-    <hr>
   </div>
   <% @question.answers.each do |answer|  %>
   <% unless answer.id.nil? %>
+  <hr>
   <div class="row">
+
+      <%= render partial: "questions/votes", locals: {voteable: answer} %>
     <div class="col-xs-10">
-      <hr>
+
       <div class="panel panel-default">
         <header class="panel-heading">Respondió <%= answer.user.email %> hace <%= answer.created_at %></header>
         <div class="panel-body"><%= answer.body %></div>
@@ -54,7 +59,9 @@
   <div class="row">
     <div class="col-xs-9 col-xs-offset-1">
       <%= render partial: "questions/comments", locals: {commentable: answer} %>
-      <%= render partial: "questions/comments_form", locals: {commentable: answer} %>
+      <% if user_signed_in? %>
+        <%= render partial: "questions/comments_form", locals: {commentable: answer} %>
+      <% end %>
     </div>
   </div>
     <% end %>
