@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+#markdown
+gem 'redcarpet'
+gem 'albino'
+gem 'nokogiri'
+
 #i18n
 gem 'rails-i18n'
 #devise

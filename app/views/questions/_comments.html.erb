@@ -1,7 +1,7 @@
 <% commentable.comments.each do |comment| %>
   <% unless comment.id.nil? %>
     <div class="well">
-      <%= comment.body %>
+      <%= markdown(comment.body) %>
     </div>
-  <% end %>  
+  <% end %>
 <% end %>

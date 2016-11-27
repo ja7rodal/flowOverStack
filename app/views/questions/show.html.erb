@@ -1,8 +1,9 @@
 <div class="container"><!-- queston-->
   <% if @answer.errors.any? %>
     <div class="row">
-      <div class=" col-xs-9 alert alert-danger">
-          <ul>
+      <div class="alert alert-danger alert-dismissable col-xs-8">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <ul>
             <% @answer.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
             <% end %>
@@ -13,7 +14,8 @@
 
     <%if @comment.errors.any? %>
     <div class="row">
-      <div class=" col-xs-9 alert alert-danger">
+      <div class="alert alert-danger alert-dismissable col-xs-8">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
         <ul>
           <% @comment.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -27,7 +29,7 @@
     <h2><%= @question.title %></h2>
     <%= render partial: "questions/votes", locals: {voteable: @question} %>
     <div class="col-xs-10">
-      <p><%= @question.description %></p>
+      <p><%= markdown(@question.description) %></p>
     </div>
   </div>
   <!-- comments-->
@@ -56,7 +58,7 @@
 
       <div class="panel panel-default">
         <header class="panel-heading">Respondió <%= answer.user.email %> hace <%= answer.created_at %></header>
-        <div class="panel-body"><%= answer.body %></div>
+        <div class="panel-body"><%= markdown(answer.body) %></div>
       </div>
     </div>
   </div>
