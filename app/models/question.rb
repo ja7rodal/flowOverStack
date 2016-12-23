@@ -19,13 +19,7 @@ class Question < ApplicationRecord
   has_many :comments, as: :commentable
   has_many :votes, as: :voteable
 
-
-  #def self.search(query)
-  #  where("title like ? OR description like ?", "%#{query}%", "%#{query}%")
-  #end
-
   def self.search(query)
-    #return where('false') if query.blank?
 
     conditions = []
     search_columns = [ :title, :description ]
