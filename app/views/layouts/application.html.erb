@@ -55,15 +55,16 @@
           <li><%= link_to "Ingresar", new_user_session_path%></li>
           <li><%= link_to "Registrarse", new_user_registration_path %></li>
           <% end %>
-          <form class="navbar-form navbar-left" role="search">
+          <%= form_tag(questions_path, :method => "get", class: "navbar-form navbar-left") do %>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Pregunta...">
+              <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Pregunta..." %>
             </div>
-          </form>
-          </ul>
-        </div>
+          <% end %>
+
+        </ul>
       </div>
     </div>
+  </div>
 
     <div class="container">
       <div class="row">
