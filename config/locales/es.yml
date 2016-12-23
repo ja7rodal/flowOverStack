@@ -1,16 +1,13 @@
 es:
-  errors:
-    messages:
-      blank: "no puede estar en blanco"
-      invalid: "es inválido"
-
   activerecord:
     attributes:
       question:
         title: "Titulo"
         description: "Descripción"
-
-  activerecord:
+      answer:
+        body: "Respuesta"
+      comment:
+        body: "Comentario"
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"
