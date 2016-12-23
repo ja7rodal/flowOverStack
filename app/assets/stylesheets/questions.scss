@@ -1,3 +1,44 @@
 // Place all the styles related to the questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* unvisited link */
+.total{
+  padding: 2px;
+  margin: 2px;
+}
+
+hr.stile {
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+    margin: 0% 0% 0% 8%;
+    width: 70%;
+}
+
+.ques{
+  margin-bottom: 1px;
+}
+
+.preg{
+  margin-bottom: 5%;
+}
+.question:link {
+    color: red;
+}
+
+/* visited link */
+.question:visited {
+    color: red;
+}
+
+/* mouse over link */
+.question:hover {
+    color: #red;
+    text-decoration: none;
+}
+
+/* selected link */
+.question:active {
+    color: red;
+}

@@ -1,29 +1,25 @@
 <div class="container">
   <div class="row">
-    <h1>Preguntas</h1>
-    <p class="text-right">
+    <h1 class="ques">Preguntas</h1>
+    <p class="text-right preg">
       <%= link_to "Hacer una Pregunta" , new_question_path, class:"btn btn-primary" %>
     </p>
   </div>
   <% @question.each do |question| %>
-  <div class="row">
-    <hr>
-    <div class="col-xs-1 col-xs-offset-1">
-      <p class="text-center"><%= question.votes.count %></p>
+  <div class="row total">
+    <hr class="stile" align="center">
+    <div class="col-xs-1 col-xs-offset-1 votos">
+      <p class="text-center lead"><%= question.votes.count %></p>
       <p class="text-center">Votos</p>
     </div>
 
-    <div class="col-xs-1">
-      <p class="text-center"><%= question.answers.count %></p>
+    <div class="col-xs-1 respu">
+      <p class="text-center lead"><%= question.answers.count %></p>
       <p>Respuestas</p>
     </div>
-    <div class="col-xs-9">
-
-      <p><%=link_to question.title, question_path(question), class:"lead" %></p>
+    <div class="col-xs-9 ">
+      <p><%=link_to question.title, question_path(question), class:"lead question" %></p>
       <p>Pregunto <%= question.user.email %> hace <%= question.created_at %></p>
-      <!-- <p><%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_question_path(question) %>
-        <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, question, method: :delete, data: { confirm: "¿Estás seguro de eliminar este questiono?" } %>
-      </p> -->
     </div>
   </div>
   <% end %>
