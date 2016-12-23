@@ -20,8 +20,24 @@ class Question < ApplicationRecord
   has_many :votes, as: :voteable
 
 
+  #def self.search(query)
+  #  where("title like ? OR description like ?", "%#{query}%", "%#{query}%")
+  #end
+
   def self.search(query)
-      where("title like ? OR description like ?", "%#{query}%", "%#{query}%")
+    #return where('false') if query.blank?
+
+    conditions = []
+    search_columns = [ :title, :description ]
+
+    query.split(' ').each do |word|
+      search_columns.each do |column|
+        conditions << " lower(#{column}) LIKE lower(#{sanitize("%#{word}%")}) "
+      end
+    end
+
+    conditions = conditions.join('OR')
+    self.where(conditions)
   end
 
 
